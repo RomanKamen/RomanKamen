@@ -59,7 +59,3 @@ class Deck:
         if card:
             self.hand_cards.append(card)
         pass
-
-    def update(self):
-        self.cards = filter(lambda card: card.is_alive, self.cards)
-

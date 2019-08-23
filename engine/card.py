@@ -29,7 +29,7 @@ class Card:
         self.race = race  # ROMAN, Keril, rat, Vetalya,
 
         self.game = None
-        self.is_played = False # Esli eta hujna na stole
+        self.is_played = False  # Esli eta hujna na stole
 
     @property
     def is_alive(self):
@@ -62,6 +62,5 @@ class Card:
         else:
             assert 'Unknown attacker\'s race'
 
-
-
+        self.game.update()
 
