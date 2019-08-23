@@ -1,6 +1,6 @@
 import random
 
-from engine.config import DECK_LENGTH, HAND_CARDS_COUNT
+from GameEngine.settings import DECK_LENGTH, HAND_CARDS_COUNT
 
 
 class Deck:
@@ -39,6 +39,10 @@ class Deck:
             assert 'Not Enough Cards'
 
     def get_card_or_none(self):
+        """
+
+        :return:
+        """
         if self.cards_count > 0:
             card = self.cards.pop(-1)
             # self.used_cards.append(card)
@@ -47,13 +51,18 @@ class Deck:
             return None
 
     def add_card(self, card):
+        """
+
+        :param card: Card
+        :return: None
+        """
         # mb random insert is faster
         self.cards.append(card)
         self.shuffle()
 
     def take_card(self):
         """
-            Take a card in your hand.
+            Takes a card from the deck and puts it in the hand.
         """
         card = self.get_card_or_none()
         if card:

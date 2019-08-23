@@ -1,4 +1,4 @@
-from engine.table import Table
+from GameEngine.table import Table
 
 # @TODO: Use Result
 

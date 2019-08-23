@@ -1,4 +1,4 @@
-from engine.shortcuts import deal_damage, game_initialized_only
+from GameEngine.shortcuts import deal_damage, game_initialized_only
 
 
 class Player:
@@ -8,6 +8,7 @@ class Player:
         self.client_id = 1
         self.side = ''
         self.hp = 30
+        self.armor = 0
 
     def init_game(self, game):
         self.game = game

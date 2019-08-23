@@ -1,7 +1,7 @@
 import random
 
-from engine.shortcuts import deal_damage
-from engine.config import DEFAULT_CARD_IMAGE, RAT_STEAL_CHANCE
+from GameEngine.shortcuts import deal_damage, game_initialized_only
+from GameEngine.settings import DEFAULT_CARD_IMAGE, RAT_STEAL_CHANCE
 
 '''
     Пролог
@@ -17,7 +17,7 @@ from engine.config import DEFAULT_CARD_IMAGE, RAT_STEAL_CHANCE
 
 
 class Card:
-    def __init__(self, name, hp, armor, damage, description, race):
+    def __init__(self, name, hp, armor, damage, manacost, description='', race='keril'):
         # meta
         self.name = name
         self.description = description
@@ -26,6 +26,7 @@ class Card:
         self.hp = hp
         self.armor = armor
         self.damage = damage
+        self.manacost = manacost
         self.race = race  # ROMAN, Keril, rat, Vetalya,
 
         self.game = None
@@ -38,9 +39,11 @@ class Card:
     def init_game(self, game):
         self.game = game
 
+    @game_initialized_only
     def attack(self, target):
         target.handle_attack(self)
 
+    @game_initialized_only
     def handle_attack(self, attacker):
         if attacker.race == 'roman':
             deal_damage(self, attacker, ignore_armor=True)
