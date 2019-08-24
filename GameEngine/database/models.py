@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String
 
 from GameEngine.database import Base
+from GameEngine.shortcuts import Card
 
 
 class CardModel(Base):
@@ -16,3 +17,13 @@ class CardModel(Base):
     damage = Column(Integer, nullable=False)
     manacost = Column(Integer, nullable=False)
     race = Column(String(32), nullable=False, default='keril')
+
+    def get_card(self):
+        card = Card(name=self.name,
+                    description=self.description,
+                    hp=self.hp,
+                    armor=self.armor,
+                    damage=self.damage,
+                    manacost=self.manacost,
+                    race=self.race)
+        return card

@@ -1,6 +1,8 @@
 from GameEngine.table import Table
+from GameEngine.history import History
 
-# @TODO: Use Result
+# TODO: Use Result
+# TODO: end_act
 
 
 class Game:
@@ -14,18 +16,18 @@ class Game:
         self.dire.set_side('dire')
 
         self.players = [self.radiant, self.dire]
-        self.moves_count = 0
+        self.history = History()
         self.winner = None
 
         self.table = Table()
 
     @property
     def current_player(self):
-        return self.players[self.moves_count % 2]
+        return self.players[self.history.ended_acts_count % 2]
 
     @property
     def next_player(self):
-        return self.players[self.moves_count % 2 - 1]
+        return self.players[self.history.ended_acts_count % 2 - 1]
 
     def update(self):
         self.table.update()
@@ -36,6 +38,10 @@ class Game:
 
         if self.winner:
             self.end_game()
+
+    def end_act(self):
+        self.history.end_act()
+        pass
 
     def end_game(self):
         pass

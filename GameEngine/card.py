@@ -1,6 +1,6 @@
 import random
 
-from GameEngine.shortcuts import deal_damage, game_initialized_only
+from GameEngine.func import deal_damage, game_initialized_only
 from GameEngine.settings import DEFAULT_CARD_IMAGE, RAT_STEAL_CHANCE
 
 '''
@@ -13,7 +13,7 @@ from GameEngine.settings import DEFAULT_CARD_IMAGE, RAT_STEAL_CHANCE
     
 '''
 
-# TODO: game inited decorator
+# TODO: current card state as dict method
 
 
 class Card:
@@ -67,3 +67,5 @@ class Card:
 
         self.game.update()
 
+    def __repr__(self):
+        return self.name
